@@ -2,8 +2,6 @@ package br.com.emailex;
 
 import java.text.DateFormat;
 import java.util.Date;
-
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.emailex.interfaces.EmailStruct;
 
 @Named
-@RequestScoped
 public class HttpManipulation implements EmailStruct {
-
-	private @Inject ServEmail sm;
-
+	@Inject private ServEmail sm;
 	public HttpManipulation() {
 
 	}

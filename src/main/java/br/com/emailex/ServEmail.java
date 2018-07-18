@@ -2,7 +2,6 @@ package br.com.emailex;
 
 import java.util.Properties;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -13,7 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 @Named
-public class ServEmail {
+public class ServEmail{
 	private String mailSMTPServer;
 	private String mailSMTPServerPort;
 
@@ -68,7 +67,7 @@ public class ServEmail {
 	}
 }
 
-//clase que retorna uma autenticacao para ser enviada e verificada pelo servidor smtp
+//classe que retorna uma autenticacao para ser enviada e verificada pelo servidor smtp
 class SimpleAuth extends Authenticator {
 	public String username = null;
 	public String password = null;
