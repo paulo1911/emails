@@ -1,9 +1,12 @@
 package br.com.emailex;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +19,7 @@ public class HttpManipulation implements EmailStruct {
 
 	}
 
-	public void HttpPrep(HttpServletRequest request, HttpServletResponse response) {
+	public void HttpPrep(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String IP = request.getHeader("X-FORWARDED-FOR");
 		if (IP == null) {
 			IP = request.getRemoteAddr();
@@ -42,6 +45,8 @@ public class HttpManipulation implements EmailStruct {
 				+ "User Agent: " + request.getHeader("user-agent") + "\n" + "IP: " + IP + "\n" + "Em: " + toDay;
 		sm.servemail("apptosendemail@gmail.com", "f.dutraaguiar@gmail.com", "Formulário de Contato do Sistema",
 				mensagemfinal);
+		RequestDispatcher rd=request.getRequestDispatcher("/FormularioContato.html");
+		rd.forward(request, response);
 	}
 
 }
