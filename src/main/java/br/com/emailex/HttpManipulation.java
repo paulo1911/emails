@@ -10,16 +10,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.jmx.LoggerDynamicMBean;
+
 import br.com.emailex.interfaces.EmailStruct;
 
 @Named
 public class HttpManipulation implements EmailStruct {
 	@Inject private ServEmail sm;
+	private static final Logger logger = LogManager.getLogger(HttpManipulation.class);
 	public HttpManipulation() {
 
 	}
 
 	public void HttpPrep(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		logger.info("Iniciando teste de log");
 		String IP = request.getHeader("X-FORWARDED-FOR");
 		if (IP == null) {
 			IP = request.getRemoteAddr();
@@ -33,6 +41,7 @@ public class HttpManipulation implements EmailStruct {
 		} else {
 			isMobile = "Acesso via Desktop";
 		}
+		logger.debug("Manipulando as informações para o email");
 		Date datahoje = new Date();
 		String toDay = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(datahoje);
 		response.setContentType("text/html");
@@ -47,6 +56,7 @@ public class HttpManipulation implements EmailStruct {
 				mensagemfinal);
 		RequestDispatcher rd=request.getRequestDispatcher("/FormularioContato.html");
 		rd.forward(request, response);
+		logger.info("Finalizando e retornando para o formulário");
 	}
 
 }

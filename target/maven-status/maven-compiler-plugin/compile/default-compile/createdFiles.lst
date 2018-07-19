@@ -1,0 +1,5 @@
+br\com\emailex\HttpManipulation.class
+br\com\emailex\SimpleAuth.class
+br\com\emailex\FormularioContato.class
+br\com\emailex\interfaces\EmailStruct.class
+br\com\emailex\ServEmail.class

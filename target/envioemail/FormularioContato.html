@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Emails 7k</title>
+<link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+	<form action="envioemail" method="post">
+		<div class="box">
+			<h1>Formulario de Contato :</h1>
+
+			<label> <span>Nome Completo</span> <input type="text"
+				class="input_text" name="nome" id="name" required="required" placeholder="Jão Mendes... Marcio Aroldo..."/>
+
+			</label> <label> <span>Email</span> <input type="text"
+				class="input_text" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="required" autocomplete="off" placeholder="example@example.com"/>
+			</label> <label> <span>Telefone</span> <input type="text"
+				class="input_text" name="telefone" id="tel" maxlength="15" required="required" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" autocomplete="off" placeholder="(xx) xxxx-xxxx"/>
+			</label> <label> <span>Mensagem</span> <textarea class="message"
+					name="msg" id="msg" required="required" autocomplete="off" placeholder="Digite aqui sua mensagem de contato, em breve responderemos"></textarea> <input type="submit"
+				class="button" value="Enviar" /> <input type="reset" class="button"
+				value="Limpar" />
+			</label>
+		</div>
+	</form>
+</body>
+</html>
