@@ -3,6 +3,7 @@ package br.com.emailex;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.RequestDispatcher;
@@ -10,11 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.jmx.LoggerDynamicMBean;
 
 import br.com.emailex.interfaces.EmailStruct;
 
@@ -27,7 +25,7 @@ public class HttpManipulation implements EmailStruct {
 	}
 
 	public void HttpPrep(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.info("Iniciando teste de log");
+		logger.info("Iniciando teste de LOG DA CLASSE HttpManipulation");
 		String IP = request.getHeader("X-FORWARDED-FOR");
 		if (IP == null) {
 			IP = request.getRemoteAddr();
@@ -43,6 +41,7 @@ public class HttpManipulation implements EmailStruct {
 		}
 		logger.debug("Manipulando as informações para o email");
 		Date datahoje = new Date();
+		logger.trace(HttpManipulation.class);
 		String toDay = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(datahoje);
 		response.setContentType("text/html");
 		String nome = request.getParameter("nome");

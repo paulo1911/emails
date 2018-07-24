@@ -23,6 +23,7 @@ public class FormularioContato extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.info("Iniciando teste de LOG DA CLASSE FormularioContato");
 		httpmanipulator.HttpPrep(request, response);
 		
 

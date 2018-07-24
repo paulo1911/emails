@@ -11,12 +11,16 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 @Named
 public class ServEmail{
 	private String mailSMTPServer;
 	private String mailSMTPServerPort;
+	private static final Logger logger = LogManager.getLogger(ServEmail.class);
 
-	ServEmail() {
+	public ServEmail() {
 		mailSMTPServer = "smtp.gmail.com";
 		mailSMTPServerPort = "465";
 	}
@@ -27,6 +31,7 @@ public class ServEmail{
 	}
 
 	public void servemail(String from, String to, String subject, String message) {
+		logger.info("Iniciando teste de LOG DA CLASSE ServEmail");
 		Properties props = new Properties();
 		props.put("mail.transport.protocol", "smtp");
 		props.put("mail.smtp.startssl.enable", "true");
