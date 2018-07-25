@@ -21,11 +21,17 @@ public class FormularioContato extends HttpServlet {
 	private static final Logger logger = LogManager.getLogger(FormularioContato.class);
 	
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		logger.info("Iniciando teste de LOG DA CLASSE FormularioContato");
-		httpmanipulator.HttpPrep(request, response);
-		
+	protected void service(HttpServletRequest request, HttpServletResponse response) {	
+		try {
+			httpmanipulator.HttpPrep(request, response);
+			logger.info("Email enviado com sucesso");
+		} catch (ServletException e) {
+			logger.info("Ocorreu uma falha com o servlet.\nErro: "+e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			logger.info("Ocorreu uma falha.\nContate o administrador para maiores informações. Erro: "+e);
+			e.printStackTrace();
+		}
 
 	}
 
