@@ -54,8 +54,7 @@ public class ServEmail{
 			msg.setSubject(subject);
 			msg.setContent(message, "text/plain");
 		} catch (Exception e) {
-			System.out.println(">> Erro: Completar Mensagem");
-			e.printStackTrace();
+			logger.info("Ocorreu um erro ao completar a mensagem... Erro: "+e);
 		}
 		Transport tr;
 		try {
@@ -65,9 +64,7 @@ public class ServEmail{
 			tr.sendMessage(msg, msg.getAllRecipients());
 			tr.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println(">> Erro: Envio Mensagem");
-			e.printStackTrace();
+			logger.info("Ocorreu uma falha ao tentar enviar a mensagem. Erro: "+e);
 		}
 	}
 }
